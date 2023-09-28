@@ -1,38 +1,219 @@
+:root {
+  --desaturated-red: hsl(0, 36%, 70%);
+  --soft-red: hsl(0, 93%, 68%);
+  --dark-grayish-red: hsl(0, 6%, 24%);
+}
+
+@font-face {
+  font-family: "JosefinSans";
+  src: url("./fonts/JosefinSans.ttf");
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  width: 100vw;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  font-family: "JosefinSans";
+  overflow: hidden;
+}
+
+.detailsContainer * {
+  position: relative;
+  z-index: 2;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  margin-left: -200px;
+  margin-top: -80px;
+}
+
+.heroImage {
+  height: 100vh;
+}
+
+.detailsContainer {
+  flex-grow: 10;
+  height: 100vh - 100px;
+  background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+  background-size: 100%;
+  position: relative;
+  padding-left: 200px;
+  padding-top: 80px;
+}
+
+.detailsContainer h1 {
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 20px;
+  line-height: 0;
+  color: var(--desaturated-red);
+  margin-top: 200px;
+}
+
+.detailsContainer h2 {
+  font-size: 60px;
+  font-weight: 600;
+  letter-spacing: 20px;
+  line-height: 0;
+  color: var(--dark-grayish-red);
+  margin-top: 60px;
+}
+
+.detailsContainer p {
+  width: 450px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 170%;
+  color: var(--desaturated-red);
+  margin-top: 50px;
+}
+
+.formContainer {
+  position: relative;
+  width: 450px;
+  margin-top: 30px;
+}
+
+.formContainer input {
+  width: 430px;
+  height: 50px;
+  background-color: transparent;
+  border: 1px solid var(--desaturated-red);
+  border-radius: 25px;
+  color: var(--desaturated-red);
+  opacity: 0.5;
+  padding-left: 20px;
+}
+
+input:focus {
+  outline: none;
+  opacity: 1;
+  font-family: "JosefinSans";
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--dark-grayish-red);
+}
+
+::placeholder {
+  font-family: "JosefinSans";
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--desaturated-red);
+}
+
+.formContainer button {
+  height: 54px;
+  width: 100px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: absolute;
+  background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 15px 50px var(--desaturated-red);
+  margin-left: 355px;
+  margin-top: -54px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.formContainer button:active {
+  background: linear-gradient(135deg, hsla(0, 80%, 86%, 0.5), hsla(0, 74%, 74%, 0.5));
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.errorIcon {
+  position: absolute;
+  margin-left: 300px;
+  margin-top: -40px;
+}
+
+.errorMessage {
+  font-weight: 400;
+  color: var(--soft-red);
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.heroMobile {
+  display: none;
+}
+
+@media only screen and (max-width: 1350px) {
+  .detailsContainer {
+    padding-left: 50px;
   }
-  to {
-    transform: rotate(360deg);
+  .background {
+    margin-left: -50px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .App {
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible;
+  }
+  .background {
+    display: none;
+  }
+  .heroImage {
+    display: none;
+  }
+  .heroMobile {
+    display: block;
+    width: 110%;
+    height: 250px;
+    object-fit: cover;
+  }
+  .detailsContainer {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  .logo {
+    height: 20px;
+    padding: 30px;
+    padding-top: 5px;
+    margin-bottom: -5px;
+    align-self: flex-start;
+  }
+  .detailsContainer h1 {
+    font-size: 40px;
+    letter-spacing: 7px;
+    margin-top: 70px;
+  }
+  .detailsContainer h2 {
+    font-size: 40px;
+    letter-spacing: 7px;
+    margin-top: 50px;
+  }
+  .detailsContainer p {
+    width: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .formContainer {
+    width: 350px;
+  }
+  .formContainer input {
+    width: 330px;
+  }
+  .formContainer button {
+    width: 75px;
+    margin-left: 280px;
+  }
+  .errorIcon {
+    margin-left: 70px;
   }
 }
